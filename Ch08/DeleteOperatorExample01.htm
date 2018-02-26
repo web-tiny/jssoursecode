@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Operator Example</title>
+</head>
+<body>
+    <p>Hello world!</p>
+    <script type="text/javascript">
+        /**
+         * 全局变量age不能通过delete操作符删除，而直接在window对象上的定义的属性可以
+         * 因为使用var语句添加的window属性有一个名为Configurable的特性，这个特性默认值是false
+         * @type {number}
+         */
+
+        var age = 29;
+        window.color = "red";
+        
+        //throws an error in IE < 9, returns false in all other browsers
+        delete window.age;
+
+        //throws an error in IE < 9, returns true in all other browsers
+        delete window.color;    //returns true
+        
+        alert(window.age);      //29
+        alert(window.color);    //undefined
+
+        /**
+         * 一般情况，尝试访问未声明的变量会抛出错误，但是通过查询window对象，可以
+         * 知道某个可能未声明的变量是否存在，所以此处不会报错，
+         */
+        var newValue=window.oldValue;
+        alert(newValue); //undefined
+    </script>
+</body>
+</html>

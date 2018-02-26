@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Window Position Example 2</title>
+    <style>
+        *{margin: 0;padding: 0;}
+    </style>
+</head>
+<body>
+    <input type="button" value="Move to (0,0)" onclick="moveTo(0,0)" />
+    <input type="button" value="Move by (50,50)" onclick="moveBy(50,50)" />
+</body>
+<script>
+    /**
+     * 下面四个方法可能会被浏览器禁用，而且在Opera和IE7及更高版本中默认就是禁用的，而且
+     * 这两个方法都不适用于框架，只能对最外层的window对象使用
+     */
+    window.moveTo(0,0);//移动到
+    window.moveBy(0,100);//移动
+    window.resizeTo(100,100);//调整到
+    window.resizeBy(100,100);//调整到
+</script>
+</html>

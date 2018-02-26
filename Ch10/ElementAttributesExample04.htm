@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Element Attributes Example 4</title>
+</head>
+<body>
+    <div id="myDiv" class="bd" title="Body text" lang="en" dir="ltr" my_special_attribute="hello!">Some text</div>
+    <input type="button" value="Get Div Attributes" onclick="getDivAtts()">
+
+    <script type="text/javascript">
+        function outputAttributes(element){
+            var pairs = new Array(),
+                attrName,
+                attrValue,
+                i,
+                len;
+
+            for (i=0, len=element.attributes.length; i < len; i++){
+                attrName = element.attributes[i].nodeName;
+                attrValue = element.attributes[i].nodeValue;
+                /**
+                 * attributes对象中的特性：
+                 * 1：在不同的浏览器中返回的顺序不同
+                 * 2：IE7及更早版本中，包括没有指定的特性也会返回，也就说返回100多个莫名其妙的特效的情况
+                 * 会很常见；
+                 * 解决办法就是：利用元素的每个特性的节点都有specified的属性，如果值为true，则说明有该特性
+                 * （html中设置了或者是通过setAttribute()方法设置了），如果是未设置过的特性，则值未false，
+                 * 如此便可完美解决
+                 */
+                if (element.attributes[i].specified){
+                    pairs.push(attrName + "=\"" + attrValue + "\"");
+                }
+            }
+            return pairs.join(" ");
+        }
+
+
+        
+        function getDivAtts(){
+            alert(outputAttributes(document.getElementById("myDiv")));
+        }
+
+    </script>
+</body>
+</html>

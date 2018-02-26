@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Type Location Methods Example 2</title>
+    <script type="text/javascript">
+    
+        /**
+        * 应用场景：给一个字符串，找出指定字符串的位置，扩展：将指定字符串中指定的字符进行增删改查
+        **/
+        var stringValue = "Lorem ipsum dolor sit amet, consectetur adipisicing elit";
+        var positions = new Array();
+        var pos = stringValue.indexOf("e");
+        
+        while(pos > -1){
+            positions.push(pos);
+            pos = stringValue.indexOf("e", pos + 1);
+        }
+            
+        alert(positions);    //"3,24,32,35,52"
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Event Object Example</title>
+</head>
+<body>
+    <input type="button" id="myBtn" value="Click Me" />
+    <script type="text/javascript">
+        /**
+         * 需要用同一个函数处理多个事件时，可以使用type属性
+         *  event.type
+         * @type {Element}
+         */
+        var btn = document.getElementById("myBtn");
+        var handler = function(event){
+            switch(event.type){
+                case "click":
+                    alert("Clicked");
+                    break;
+                    
+                case "mouseover":
+                    event.target.style.backgroundColor = "red";
+                    break;
+                    
+                case "mouseout":
+                    event.target.style.backgroundColor = "";
+                    break;                        
+            }
+        };
+        
+        btn.onclick = handler;
+        btn.onmouseover = handler;
+        btn.onmouseout = handler;
+    
+    </script>
+</body>
+</html>

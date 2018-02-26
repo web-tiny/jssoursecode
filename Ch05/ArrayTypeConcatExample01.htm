@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Type Concat Example</title>
+    <script type="text/javascript">
+
+        /**
+         * arr.concat(arr1,arr2);用于链接两个或多个数组
+         * @type {string[]}
+         */
+        var colors = ["red", "green", "blue"];
+        var colors2 = colors.concat("yellow", ["black", "brown"]);
+        var color3=["black","white","orange","green"];
+        alert(colors);     //red,green,blue        
+        alert(colors2);    //red,green,blue,yellow,black,brown
+        alert(colors.concat(colors2,color3));//red,green,blue,red,green,blue,yellow,black,brown,black,white,orange,green
+    </script>
+</head>
+<body>
+
+</body>
+</html>

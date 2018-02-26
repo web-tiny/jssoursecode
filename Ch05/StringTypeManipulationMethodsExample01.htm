@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>String Type Manipulation Methods Example</title>
+    <script type="text/javascript">
+    
+        /**
+        * slice(start,end)和substring(start,end)接收的是起始位置和结束位置(不包括结束位置)，
+        * 而substr(start,str.length)接收的则是起始位置和所要返回的字符串长度
+        * 注意：substring是以两个参数中较小一个作为起始位置，较大的参数作为结束位置。
+        *
+        * 当接收的参数是负数时:
+        * slice会将它字符串的长度与对应的负数相加，结果作为参数；
+        * substr也将负数转化为0；
+        * substring则干脆将负参数都直接转换为0。
+        **/
+        var stringValue = "hello world";
+        alert(stringValue.slice(3));        //"lo world"
+        alert(stringValue.substring(3));    //"lo world"
+        alert(stringValue.substr(3));       //"lo world"
+        alert(stringValue.slice(3, 7));     //"lo w"
+        alert(stringValue.substring(3,7));  //"lo w"
+        alert(stringValue.substr(3, 7));    //"lo worl"
+        
+        alert(stringValue.slice(-3));         //"rld"
+        alert(stringValue.substring(-3));     //"hello world"
+        alert(stringValue.substr(-3));        //"rld"
+        alert(stringValue.slice(3, -4));      // =slice(3,11)  "lo w"
+        alert(stringValue.substring(3, -4));  //=substring(3,0)=substring(0,3)  "hel"
+        alert(stringValue.substr(3, -4));     //=substr(3,0) "" (empty string)
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

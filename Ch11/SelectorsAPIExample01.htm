@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Selectors API Example</title>
+</head>
+<body>
+    <ul>
+        <li>First item</li>
+        <li class="selected">Second item</li>
+        <li>Third item</li>
+    </ul>
+    <script type="text/javascript">
+
+        /**
+         * 能调用querySelector()方法的类型包括：
+         * Document,DocumentFragment,Element
+         */
+        if (document.querySelector){
+        
+            //get the body element
+            var body = document.querySelector("body");
+            alert(body.tagName);//BODY
+                               
+            //get the element with the ID "myDiv"
+            var myDiv = document.querySelector("#myDiv");
+            alert(myDiv);//null
+                               
+            //get first element with a class of "selected"
+            var selected = document.querySelector(".selected");
+            alert(selected.innerHTML);//Second item
+                               
+            //get first image with class of "button"
+            var img = document.body.querySelector("img.button");
+            alert(img);//null
+
+        } else {
+            //有的浏览器不支持Document的querySecletor()方法
+            alert("Selectors API not supported in this browser");
+        }
+
+    </script>
+</body>
+</html>

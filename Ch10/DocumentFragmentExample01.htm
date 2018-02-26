@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Document Fragment Example</title>
+</head>
+<body>
+    <ul id="myList"></ul>
+    <input type="button" value="Add Items" onclick="addItems()">
+
+    <script type="text/javascript">
+        /**
+         * 通过文档碎片一次向添加多个节点，可以避免浏览器反复渲染
+         */
+        function addItems(){
+            var fragment = document.createDocumentFragment();//创建文档碎片
+            var ul = document.getElementById("myList");
+            var li = null;
+            
+            for (var i=0; i < 3; i++){
+                li = document.createElement("li");
+                li.appendChild(document.createTextNode("Item " + (i+1)));
+                fragment.appendChild(li);
+            }
+            ul.appendChild(fragment);
+        }
+    </script>
+</body>
+</html>

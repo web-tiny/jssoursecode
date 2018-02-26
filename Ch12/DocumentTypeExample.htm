@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+    <title>DOM Level 2 DocumentType Example</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /**
+         * 厉害了，还有这操作，
+         * document.doctype.publicId
+         * document.doctype.systemId
+         * DocumentType新增的三个属性：publicId,systemId,internalSubset；
+         */
+        alert(document.doctype.publicId);//-//W3C//DTD HTML 4.01//EN
+        alert(document.doctype.systemId);//http://www.w3.org/TR/html4/strict.dtd
+    </script>
+</body>
+</html>

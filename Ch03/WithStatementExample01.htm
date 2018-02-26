@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>With Statement Example 1</title>
+    <script type="text/javascript">
+    //example:http://localhost:63343/jslearn/js_native.html?_ijt=4n4dqae5clibs7l8b9tp57ekjr
+        with(location){
+            var qs = search.substring(1);   
+            var hostName = hostname;      //unavailable when viewing from a local file
+            var url = href;  
+            var use=function(){
+                return 55;
+             }
+        }
+
+        alert(qs);  //_ijt=4n4dqae5clibs7l8b9tp57ekjr
+        alert(hostName);    //localhost
+        alert(url); //http://localhost:63343/jslearn/js_native.html?_ijt=4n4dqae5clibs7l8b9tp57ekjr
+        alert(use()) //55
+        
+        /**
+        *   with(){}，with 语句可以方便地用来引用某个特定对象中已有的属性，但是不能用来给对象添加属性。要给对象创建新的属性，必须明确地引用该对象。
+        *   1：可以直接使用with指定对象的属性和方法，
+        **/
+ 
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Load Event Example</title>
+    <script type="text/javascript" src="EventUtil.js"></script>
+</head>
+<body>
+    <img src="smile.gif" id="myImage" />
+    <script type="text/javascript">
+        /**
+         * 可以触发window上面load事件的对象：img，link样式表，script引入的js
+         * @type {Element}
+         */
+        var image = document.getElementById("myImage");
+        EventUtil.addHandler(image, "load", function(event){
+            event = EventUtil.getEvent(event);
+            alert(EventUtil.getTarget(event).src);
+        });
+    </script>
+</body>
+</html>

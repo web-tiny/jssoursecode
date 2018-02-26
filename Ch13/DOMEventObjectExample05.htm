@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Event Object Example</title>
+</head>
+<body>
+    <input type="button" value="Click Me" id="myBtn" />
+    <script type="text/javascript">
+        /**
+         * event.stopPropagation()；是阻止事件在DOM层次中的传播，即取消进一步的事件捕获或者冒泡，
+         * 妈蛋，以前我简直把event.preventDefault()和event.stopPropagation()都认为是阻止事件的默认行为，
+         * 错得太特么离谱了，
+         * @type {Element}
+         */
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function(event){
+            alert("Clicked");
+            event.stopPropagation();
+        };
+        
+        document.body.onclick = function(event){
+            alert("Body clicked");
+        };
+    </script>
+</body>
+</html>

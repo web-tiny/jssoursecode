@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prototype Pattern Example</title>
+    <script type="text/javascript">
+                    
+                    
+        alert(typeof Array.prototype.sort);         //"function"
+        alert(typeof String.prototype.substring);   //"function"
+
+        String.prototype.startsWith = function (text) {
+            return this.indexOf(text) == 0;//indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。
+        };
+        
+        var msg = "Hello world!";
+        alert(msg.startsWith("world"));   //false
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Selectors API Example</title>
+</head>
+<body class="page1">
+
+    <script type="text/javascript">
+        /**
+         * 该方法接受一个参数，即CSS选择符，如果调用元素与该元素匹配则返回true，否则返回false
+         * @param element
+         * @param selector
+         * @returns {*}
+         */
+        function matchesSelector(element, selector){
+            if (element.matchesSelector){
+                return element.matchesSelector(selector);
+            } else if (element.msMatchesSelector){
+                return element.msMatchesSelector(selector);//IE9+
+            } else if (element.mozMatchesSelector){
+                return element.mozMatchesSelector(selector);//FireFox3.6+
+            } else if (element.webkitMatchesSelector){
+                return element.webkitMatchesSelector(selector);//Safari5+ and Chrome
+            } else {
+                throw new Error("Not supported.");
+            }
+        }
+        
+        if (matchesSelector(document.body, "body.page1")){
+            alert("It's page 1!");
+        }
+
+
+    </script>
+</body>
+</html>

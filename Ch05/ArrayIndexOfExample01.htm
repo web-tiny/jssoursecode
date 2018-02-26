@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array indexOf() Example</title>
+</head>
+<body>
+    <script>
+        /**
+        *stringObject.lastIndexOf(searchvalue,fromindex),
+        *searchvalue	必需有的参数：规定需检索的字符串值。
+        *fromindex 可选的整数参数。规定在字符串中开始检索的位置。它的合法取值是 0 到 stringObject.length - 1。如省略该参数，则将从字符串的最后一个字符处开始检索。
+        */
+        var numbers = [1,2,3,4,5,4,3,2,1];
+        
+        alert(numbers.indexOf(4));        //3
+        alert(numbers.lastIndexOf(4));    //5
+        
+        alert(numbers.indexOf(4, 4));     //5
+        alert(numbers.lastIndexOf(4, 4)); //3       
+
+        var person = { name: "Nicholas" };
+        var people = [{ name: "Nicholas" }];
+        var morePeople = [person];
+        
+        alert(people.indexOf(person));     //-1
+        alert(morePeople.indexOf(person)); //0
+
+    </script>
+</body>
+</html>

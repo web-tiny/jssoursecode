@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OnError Example</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /**
+         * 错误事件，交给浏览器来报告错误，一般不这样做，适当地使用try-catch来解决
+         * @param message
+         * @param url
+         * @param line
+         * @returns {boolean}
+         */
+        window.onerror = function(message, url, line){
+            alert(message);
+            return false;
+        };
+        throw new Error("Something bad happened.");
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Event Object Example</title>
+</head>
+<body>
+    <a href="http://www.nczonline.net/" id="myLink">Click Me</a>
+    <p>This link will not navigate when clicked.</p>
+    <script type="text/javascript">
+        /**
+         * event.preventDefault() 是阻止事件的默认行为，如：
+         * 在a标签里，链接的行为就是在被单机是会导航到其href特性指定的URL，
+         * @type {Element}
+         */
+        var link = document.getElementById("myLink");
+        link.onclick = function(event){
+            event.preventDefault();
+        };    
+    </script>
+</body>
+</html>

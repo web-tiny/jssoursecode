@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Try-Catch Example</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /**
+         * finally中的句子无论如何都会执行，把可能出现异常的内容卸载try中，catch会接受一个对象，此对象上有一个message属性
+         * 可以使用error.message来抛出具体的错误信息。
+         * @returns {number}
+         */
+        function testFinally(){
+            try {
+                return 2;
+            } catch (error){
+                return 1;
+            } finally {
+                return 0;
+            }
+        }
+        
+        function testWithoutFinally(){
+            try {
+                return 2;
+            } catch (error){
+                return 1;
+            }
+        }
+        
+        alert(testFinally(1)); //0
+        alert(testWithoutFinally()); //2
+        
+    </script>
+</body>
+</html>

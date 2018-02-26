@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Reduction Example</title>
+</head>
+<body>
+    <script type="application/javascript;version=1.8">
+    
+        /**
+        *previousValu 上一次值
+        *currentValue 当前值
+        *currentIndex 当前值的索引
+        *array 数组
+        *initialValue可选参数, 作为第一次调用 callback 的第一个参数。
+        **/
+        
+        var values = [1,2,3,4,5];
+        var sum = values.reduce(function(prev, cur, index, array){
+            return prev + cur;
+        },10);
+        alert(sum); //15
+
+        var a=[10,20,30,40,50].reduce(function(pre,cur){
+            return pre+cur;
+         },50)
+        alert(a); //200
+
+    </script>
+</body>
+</html>

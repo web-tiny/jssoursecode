@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOMContentLoaded Event Example</title>
+    <script type="text/javascript" src="client.js"></script>
+    <script type="text/javascript" src="EventUtil.js"></script>
+</head>
+<body>
+    <div id="myDiv">DOMContentLoaded example - works only in Opera and Firefox</div>
+    <script type="text/javascript">
+        /**DOMContentLoaded事件在load事件之前加载
+         * 因为如下的代码先弹出 “Content loaded.”
+         *
+         */
+        EventUtil.addHandler(window, "load", function(event){
+            alert("Window loaded.");
+        });
+        EventUtil.addHandler(window, "DOMContentLoaded", function(event){
+            alert("Content loaded.");
+        });
+    </script>
+</body>
+</html>

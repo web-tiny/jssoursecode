@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Plugin Detection Example</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        /**
+         * 对于非IE而言，可以使用plugins数组来达到这个目的，该数组包含下列属性：
+         * name
+         * descrition
+         * filename
+         * length
+         * @param name
+         * @returns {boolean}
+         */
+        //plugin detection - doesn't work in IE
+        function hasPlugin(name){
+            name = name.toLowerCase();
+            for (var i=0; i < navigator.mimeTypes.length; i++){
+                if (navigator.plugins[i].name.toLowerCase().indexOf(name) > -1){
+                    return true;
+                }
+            }
+        
+            return false;
+        }
+        
+        //detect flash
+        alert(hasPlugin("Flash"));
+        
+        //detect quicktime
+        alert(hasPlugin("QuickTime"));
+        
+        //detect Java
+        alert(hasPlugin("Java"));
+
+    </script>
+</body>
+</html>

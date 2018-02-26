@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comment Node Example</title>
+</head>
+<body>
+    <div id="myDiv"><!-- A comment --></div>
+    <input type="button" value="Get Comment" onclick="getComment()">
+
+    <script type="text/javascript">
+        function getComment(){
+        
+            var div = document.getElementById("myDiv");
+            var comment = div.firstChild;
+            alert(comment.data);//A comment
+            alert(comment.nodeValue);//A comment
+            alert(comment.nodeName);//#comment
+            console.log(comment.parentNode);//<div id="myDiv"><!-- A comment --></div>
+        }
+
+    </script>
+</body>
+</html>

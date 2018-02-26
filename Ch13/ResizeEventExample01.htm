@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resize Event Example</title>
+    <script type="text/javascript" src="EventUtil.js"></script>
+</head>
+<body>
+    <p>Resize event example - resize the browser window.</p>
+    <script type="text/javascript">
+        /**
+         * resize 事件发生在：浏览器窗口大小发生变化的时候，这个事件在window上面触发，
+         * 浏览器窗口最小化或最大化的时候也会触发resize事件。
+         * 注意：关于resize事件何时会触发：Firefox会在用户停止调整窗口大小时才会触发，
+         * 而IE，Safari，Chrome，Opera会在浏览器窗口大小变化了1像素时就触发resize，然后随着变化不断重复触发
+         * 所以：不要在这个事件处理程序中加入大计算量代码，因为这些代码有可能会被频繁执行而导致浏览器反应变慢；
+         */
+        EventUtil.addHandler(window, "resize", function(event){
+            alert("Resized");
+        });
+    </script>
+</body>
+</html>

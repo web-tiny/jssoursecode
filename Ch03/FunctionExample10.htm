@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Function Example 10</title>
+    <script type="text/javascript">
+        /**
+         * ECMAScript因为不存在函数签名(接受的参数的类型和数量不同)，所以没有函数重载这么一说，
+         * 如果在JS中写了同名的函数，那么后面的函数会覆盖前面的函数
+         * @param num
+         * @returns {*}
+         */
+        function addSomeNumber(num){
+            return num + 100;
+        }
+        
+        function addSomeNumber(num) {
+            return num + 200;
+        }
+        
+        var result = addSomeNumber(100);    //300
+        alert(result);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Console Logging Example</title>
+</head>
+<body>
+    <p>Open the console for your browser to see the messages.</p>
+    <script type="text/javascript">
+        /**
+         * 检测哪个js控制台可用，然后使用相应的借口
+         * @param message
+         */
+        function log(message){
+            if (typeof console == "object"){
+                console.log(message);
+            } else if (typeof opera == "object"){
+                opera.postError(message);//opera 10.5 之前版本
+            } else if (typeof java == "object" && typeof java.lang == "object"){
+                java.lang.System.out.println(message);//在js中把消息写入到java控制台
+            }
+        }
+        
+        function sum(num1, num2){
+            log("Entering sum(), arguments are " + num1 + "," + num2);
+        
+            log("Before calculation");
+            var result = num1 + num2;
+            log("After calculation");
+        
+            log("Exiting sum()");
+            return result;
+        }
+        
+        var result = sum(10, 23);
+
+    </script>
+</body>
+</html>

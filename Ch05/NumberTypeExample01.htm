@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Type Example</title>
+    <script type="text/javascript">
+        var numberObject = new Number(10);
+        var numberValue = 99;
+        
+        //toString() using a radix
+        alert(numberObject.toString());       //"10"
+        alert(numberObject.toString(2));      //"1010"
+        alert(numberObject.toString(8));      //"12"
+        alert(numberObject.toString(10));     //"10"
+        alert(numberObject.toString(16));     //"a"
+        
+        //toFixed()
+        alert(numberObject.toFixed(2));    //outputs "10.00"
+
+        /**
+        *NumberObject.toPrecision(num)
+        *num 必需。规定必须被转换为指数计数法的最小位数。该参数是 1 ~ 21 之间（且包括 1 和 21）的值。有效实现允许有选择地支持更大或更小的 num。
+        *如果省略了该参数，则调用方法 toString()，而不是把数字转换成十进制的值
+        *
+        **/
+        numberObject = new Number(99);
+        alert(numberObject.toPrecision());     //"99"
+        alert(numberObject.toPrecision(1));    //"1e+2"
+        alert(numberObject.toPrecision(2));    //"99"
+        alert(numberObject.toPrecision(3));    //"99.0"
+           
+        alert(typeof numberObject);   //object
+        alert(typeof numberValue);    //number
+        alert(numberObject instanceof Number);  //true
+        alert(numberValue instanceof Number);   //false
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

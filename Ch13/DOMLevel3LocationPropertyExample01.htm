@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Level 3 Location Property Example</title>
+    <script type="text/javascript" src="EventUtil.js"></script>
+</head>
+<body>
+    <input type="text" id="myText" />
+    <script type="text/javascript">
+        /**
+         * 支持location的浏览器也不多，所以也不推荐使用
+         * @type {Element}
+         */
+        var textbox = document.getElementById("myText");
+        EventUtil.addHandler(textbox, "keyup", function(event){
+            event = EventUtil.getEvent(event);
+
+            var loc = event.location || event.keyLocation;
+            if (loc){
+                alert(loc);    
+            } 
+   
+        });
+    </script>
+</body>
+</html>

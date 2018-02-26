@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Function Type Arguments Caller Example</title>
+    <script type="text/javascript">
+        /**
+        * caller:是函数对象的一个属性，该属性保存着调用当前函数的函数,
+        * 注意，是调用。不仅仅包含闭包哦。如果没有父函数，则为null.
+        *
+        * callee是arguments对象的一个成员，它的值为“正被执行的Function对象”
+        *
+        **/
+        
+        function outer(){
+            inner();
+        }
+        
+        function inner(){
+            alert(arguments.callee.caller);//function outer(){inner(); }
+            alert(arguments.callee);// function inner(){alert(arguments.callee.caller);alert(arguments.callee);}
+        }
+        
+        outer();
+        
+         function parent(){
+		    alert(parent.caller) //function parentOne(){ parent();alert(arguments.callee)}
+		  }
+		 function parentOne(){
+		    parent();
+		    alert(arguments.callee) //function parentOne(){ parent();alert(arguments.callee)}
+		 }
+		 parentOne();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

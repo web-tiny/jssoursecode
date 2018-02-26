@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prototype Pattern Example</title>
+    <script type="text/javascript">
+                    
+        function Person(){
+        }
+
+       // var friend = new Person();// error 函数的实例对象在此创建会报错
+        Person.prototype = {
+            constructor: Person,
+            name : "Nicholas",
+            age : 29,
+            job : "Software Engineer",
+           sayName : function () {
+               alert(this.name);
+           }
+        };
+        var friend = new Person();//函数的实例对象在此创建就不会报错  ->Nickolas
+        friend.sayName();
+
+
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

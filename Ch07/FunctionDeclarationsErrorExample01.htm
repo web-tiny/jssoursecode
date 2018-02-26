@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Function Declaration Error Example</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var condition = true;
+        //never do this!不要这样做
+        if(condition){
+            function sayHi(){
+                alert("Hi!");
+            }
+        } else {
+            function sayHi(){
+                alert("Yo!");
+            }
+        }
+
+        sayHi();
+        //可以这样写，通过表达式的方式
+         var sayHello;
+        if(condition){
+            sayHello=function(){
+                alert("hello");
+            }
+        }else{
+            sayHello=function(){
+                alert("hello");
+            }
+        }
+        sayHello();
+    </script>
+</body>
+</html>

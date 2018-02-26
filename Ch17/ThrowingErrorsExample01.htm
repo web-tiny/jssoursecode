@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Throwing Errors Example</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /**
+         * 准确定位bug
+         * @param message
+         * @constructor
+         */
+        function CustomError(message){       
+            this.name = "CustomError";
+            this.message = message;
+        }
+        
+        CustomError.prototype = new Error();
+
+        /**抛出自定义错误
+         * 这个函数检验values是否是一个数组，如果不是，会抛出错误信息的出处及原因
+         * @param values
+         * @returns {*}
+         */
+        function process(values){
+        
+            if (!(values instanceof Array)){
+                throw new CustomError("process(): Argument must be an array.");
+            }
+        
+            values.sort();
+        
+            for (var i=0, len=values.length; i < len; i++){
+                if (values[i] > 100){
+                    return values[i];
+                }
+            }
+        
+            return -1;
+        }
+
+        process("string");
+    </script>
+</body>
+</html>

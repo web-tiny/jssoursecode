@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>InnerHtml Example</title>
+</head>
+<body>
+    <div id="content" style="background: red;height: 100%">
+        <p>This is a <strong>paragraph</strong> with a list following it.</p>
+        <ul style="background: blue;height: 100px;padding: 10px;">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </div>
+
+    <input type="button" value="Add HTML" onclick="addHTML()">
+
+    <script type="text/javascript">
+        /**
+         * h5新增的插入标记的方法:element.insertAdjacenHTML();
+         * element.insertAdjacentHTML("beforeend/afterend/afterbegin/beforebegin","...")
+         */
+        function addHTML(){
+            var div = document.getElementById("content");
+            if (div.insertAdjacentHTML){
+                div.insertAdjacentHTML("beforeend", "<p>作为最后一个子元素插入!</p>");
+                div.insertAdjacentHTML("afterend", "<p>作为后一个同辈元素插入!</p>");
+                div.insertAdjacentHTML("afterbegin", "<p>作为第一个子元素插入!</p>");
+                div.insertAdjacentHTML("beforebegin", "<p>作为前一个同辈元素插入!</p>");
+            } else {
+                alert("insertAdjacentHTML() not supported in this browser");
+            }
+        }
+
+    </script>
+</body>
+</html>

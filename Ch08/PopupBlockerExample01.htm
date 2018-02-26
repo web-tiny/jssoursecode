@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Popup Blocker Example</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // Popup 弹出   Blocker 拦截器
+        var blocked = false;
+        
+        try {
+            var wroxWin = window.open("http://www.wrox.com", "_blank");
+            if (wroxWin == null){
+                blocked = true;
+            }
+        } catch (ex){
+            blocked = true;
+            alert(ex);
+        }
+        
+        if (blocked){
+            alert("The popup was blocked!");
+        }
+
+    </script>
+    <p>This page tries to open a window as the page is loading. It should be blocked.</p>
+ 
+</body>
+</html>

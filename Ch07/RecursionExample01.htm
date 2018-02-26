@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Recursion Example</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /**
+             * 递归，通过函数名调用函数自身
+             * */
+
+            function factorial(num){
+                if (num <= 1){
+                    return 1;
+                } else {
+                    return num * factorial(num-1);
+                }
+            }
+
+            var anotherFactorial = factorial;
+            factorial = null;
+            /**
+             * 由于调用anotherFactorial()时，必须执行factorial()，而factorial已经不是function，故
+             * 会报错
+             */
+            alert(anotherFactorial(4));  //error!
+
+
+        </script>
+     
+    </body>
+</html>

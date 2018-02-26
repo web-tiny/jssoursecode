@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prototype Chaining Example</title>
+    <script type="text/javascript">
+                    
+        function SuperType(){
+            this.property = true;
+        }
+        
+        SuperType.prototype.getSuperValue = function(){
+            return this.property;
+        };
+        
+        function SubType(){
+            this.subproperty = false;
+        }
+        
+        //inherit from SuperType
+        SubType.prototype = new SuperType();
+        
+        SubType.prototype.getSubValue = function (){
+            return this.subproperty;
+        };
+        
+        var instance = new SubType();
+        alert(instance.getSuperValue());   //true
+       
+        alert(instance instanceof Object);      //true
+        alert(instance instanceof SuperType);   //true
+        alert(instance instanceof SubType);     //true
+
+        /**
+        *prototypeObject.isPrototypeOf( object );isPrototypeOf()函数的返回值为Boolean类型。如果object当前的原型链中存在prototypeObject对象，则isPrototypeOf()方法返回true。
+        *原型链用于在同一个对象类型的不同实例之间共享功能。如果object不是对象，或者prototypeObject对象不出现在object的原型链中，
+        *则该方法返回false。
+        **/
+        alert(Object.prototype.isPrototypeOf(instance));    //true
+        alert(SuperType.prototype.isPrototypeOf(instance)); //true
+        alert(SubType.prototype.isPrototypeOf(instance));   //true
+        
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Level 0 Event Handler Example</title>
+</head>
+<body>
+    <input type="button" id="myBtn" value="Click Me" />
+    <input type="button" id="myRemoveBtn" value="Remove Event Handler" />
+    <input type="button" id="myBtnDOM2" value="Click Me" />
+    <script type="text/javascript">
+        /**
+         * DOM0 级方法添加的时间中，this就是当前元素
+         * @type {Element}
+         */
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function(){
+            alert(this.id);//myBtn
+        };
+        
+        var removeBtn = document.getElementById("myRemoveBtn");
+        removeBtn.onclick = function(){
+            btn.onclick = null;
+        };
+
+        var myBtnDOM2=document.getElementById("myBtnDOM2");
+        myBtnDOM2.attachEvent("onclick",function(){
+            alert(this===window);
+        })
+    </script>
+</body>
+</html>

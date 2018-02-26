@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>classList Example</title>
+    <style>
+        .highlight {
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="myDiv" class="init">Hello world!</div>
+    <input type="button" value="Add class" onclick="addClass()">
+    <input type="button" value="Remove class" onclick="removeClass()">
+    <input type="button" value="Toggle class" onclick="toggleClass()">
+    <input type="button" value="Contains class?" onclick="containsClass()">
+    <p>This demo works in Firefox 3.6 and Chrome 8.</p>
+
+    <div id="dataDiv" data-appid="333" data-real-name="Jiao Rengui"></div>
+
+    <input id="getFocusInput" placeholder="焦点管理">
+    <div id="focusElementName"></div>
+    <button id="myBtn">点我</button>
+
+    <script type="text/javascript">
+        /**
+         * element.classList.add("className") 增加类名
+         *                  .remove("className") 删除类名
+         *                  .toggle("className") 切换类名，有则删，无则添加
+         *                  .contains("className") 是否有某一个类
+         *
+         */
+        function addClass(){
+            var myDiv = document.getElementById("myDiv");
+            myDiv.classList.add("highlight");
+        }
+    
+        function removeClass(){
+            var myDiv = document.getElementById("myDiv");
+            myDiv.classList.remove("highlight");
+        }
+    
+        function toggleClass(){
+            var myDiv = document.getElementById("myDiv");
+            myDiv.classList.toggle("highlight");
+        }
+    
+        function containsClass(){
+            var myDiv = document.getElementById("myDiv");
+            alert(myDiv.classList.contains("highlight"));
+        }
+
+        /**
+         * H5扩展了HTMLDocument的页面加载情况：
+         * document.readyState=="loading" 加载中
+         * document.readyState=="complete" 加载结束
+         */
+        function isLoadingComplete(){
+            if(document.readyState=="complete"){
+                alert("This page had completed !")
+            }else{
+                alert("This page is not loaded !")
+            }
+        }
+        isLoadingComplete();
+
+        /**
+         * H5新增的属性：document.head
+         * 目前只有IE浏览器不支持
+         * @type {HTMLHeadElement|*}
+         */
+        var headTag=document.head || document.getElementsByTagName("head")[0];
+        console.log(headTag);
+
+        /**
+         * HMTL中，自定义属性值的格式为：<div id="dataDiv" data-id="dataAttr" data-real-name="Jiao Rengui"></div>
+         * 但是data-自定义属性名字，自定义属性名不能用驼峰命名的方式，data-appId,这种写法是错误的，正确的写法是：data-appid或者data-app-id，正确的对应的JS取值的时候用驼峰形式：dataset.appid或者dataset.appId
+         * @type {Element}
+         */
+        var dataDiv=document.getElementById("dataDiv");
+         // element.dataset.appId   获取自定义属性的值
+        var appId=dataDiv.dataset.appid;
+        var myName=dataDiv.dataset.realName;
+        console.log(appId);
+        console.log(myName);
+
+        /**
+         * H5新增的辅助管理DOM焦点的属性：
+         * document.activeElement  页面中获得焦点的元素
+         * docuement.hasFocus();判断文档是否获得焦点
+         * @type {NodeList}
+         */
+        var getFocusInput=document.getElementById("getFocusInput");
+
+        /**
+         * 绑定事件的兼容
+         */
+        if(getFocusInput.addEventListener){
+            getFocusInput.addEventListener("click",getFocus);
+        }else if(getFocusInput.attachEvent){  //IE8 及更早的IE版本
+            getFocusInput.attachEvent("onclick", getFocus);
+        }
+        function getFocus(){
+            var getFocusElement=document.activeElement.tagName;
+            document.getElementById("focusElementName").innerHTML=getFocusElement;
+            alert(document.hasFocus());
+        }
+    </script>
+    
+</body>
+</html>

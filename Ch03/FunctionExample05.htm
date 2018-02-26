@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Function Example 5</title>
+    <script type="text/javascript">
+        /**
+         * arguments是函数的内置属性，非常类似Array，使用方法:arguments[];
+         * 调用的时候可以传递任意多个参数，也可以是任意的参数类型，因为JS中的参数在内部是用一个数组来表示的
+         */
+        function sayHi() {
+            alert("Hello " + arguments[0] + ", " + arguments[1]);//  ->  Hello Nicholas, how are you today?
+            alert(argument.length);// ->  2
+        }
+
+        sayHi("Nicholas", "how are you today?");
+    </script>
+</head>
+<body>
+
+</body>
+</html>

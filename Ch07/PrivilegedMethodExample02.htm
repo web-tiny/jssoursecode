@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Privileged Method Example 2</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /**
+             * 静态私有变量
+             */
+            (function(){
+            
+                var name = "";
+                /**
+                 * 初始化未经声明的变量，总是会创建一个全局变量，so Person就变成了一个
+                 * 全局变量，能在私有作用域之外访问到；
+                 * 但是，在严格模式下给未经声明的变量赋值是会报错滴
+                 * @param value
+                 * @constructor
+                 */
+                Person = function(value){                
+                    name = value;
+                };
+                
+                Person.prototype.getName = function(){
+                    return name;
+                };
+                
+                Person.prototype.setName = function (value){
+                    name = value;
+                };
+            })();
+            
+            var person1 = new Person("Nicholas");
+            alert(person1.getName());   //"Nicholas"
+            person1.setName("Greg");
+            alert(person1.getName());   //"Greg"
+                               
+            var person2 = new Person("Michael");
+            alert(person1.getName());   //"Michael"
+            alert(person2.getName());   //"Michael"
+
+        </script>
+     
+    </body>
+</html>

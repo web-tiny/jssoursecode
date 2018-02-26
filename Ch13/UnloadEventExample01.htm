@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unload Event Example</title>
+    <script type="text/javascript" src="EventUtil.js"></script>
+</head>
+<body>
+    <p>Unload event example - navigate to another page or close this tab/window to fire the event.</p>
+    <script type="text/javascript">
+        /**
+         * onunload事件一般发生在：用户从一个页面切换到另一个页面的时候，
+         * 利用这个事件最多的情况是清除引用，以避免内存泄露
+         */
+        EventUtil.addHandler(window, "unload", function(event){
+            alert("Unloaded");
+        });
+    </script>
+</body>
+</html>

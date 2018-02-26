@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Array Type Example 9</title>
+    <script type="text/javascript">
+        /**
+         * pop() 方法用于删除并返回数组的最后一个元素。
+         *
+         * @type {Array}
+         */
+        var colors = new Array();                      //create an array
+        var count = colors.push("red", "green");       //push two items
+        alert(count);  //2  这里很有意思的是：count直接等于colors.length
+        alert(colors.length);  //2
+
+        count = colors.push("black");                  //push another item on
+        alert(count);  //3 这里很有意思的是：count直接等于colors.length
+        alert(colors.length);  //3
+
+        var item = colors.pop();                       //get the last item
+        alert(item);   //"black"
+        alert(colors.length);  //2
+    </script>
+</head>
+<body>
+
+</body>
+</html>

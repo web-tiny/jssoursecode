@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Module Pattern Example</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /**
+             * 模块模式：道格拉斯所说的模块模式就是为单例创建私有变量和特权方法
+             * 单例模式：只有一个实例对象
+             * @constructor
+             */
+            function BaseComponent(){
+            }
+            
+            function OtherComponent(){
+            }
+        
+            var application = function(){
+            
+                //private variables and functions
+                var components = new Array();
+            
+                //initialization
+                components.push(new BaseComponent());
+            
+                //public interface
+                return {
+                    getComponentCount : function(){
+                        return components.length;
+                    },
+            
+                    registerComponent : function(component){
+                        if (typeof component == "object"){
+                            components.push(component);
+                        }
+                    }
+                };
+            }();
+
+            application.registerComponent(new OtherComponent());
+            alert(application.getComponentCount());  //2
+        </script>
+     
+    </body>
+</html>

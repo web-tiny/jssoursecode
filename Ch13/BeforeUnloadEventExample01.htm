@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BeforeUnload Event Example</title>
+    <script type="text/javascript" src="EventUtil.js"></script>
+</head>
+<body>
+    <div id="myDiv">Try to navigate away from this page.</div>
+    <script type="text/javascript">
+        EventUtil.addHandler(window, "beforeunload", function(event){
+            event = EventUtil.getEvent(event);
+            var message = "I'm really going to miss you if you go.";
+            event.returnValue = message;
+            return message;
+        });
+
+        function getExplorerInfo() {
+            var explorer = window.navigator.userAgent.toLowerCase() ;
+            //ie
+            if (explorer.indexOf("msie") >= 0) {
+                var ver=explorer.match(/msie ([\d.]+)/)[1];
+                return {type:"IE",version:ver};
+            }
+            //firefox
+            else if (explorer.indexOf("firefox") >= 0) {
+                var ver=explorer.match(/firefox\/([\d.]+)/)[1];
+                return {type:"Firefox",version:ver};
+            }
+            //Chrome
+            else if(explorer.indexOf("chrome") >= 0){
+                var ver=explorer.match(/chrome\/([\d.]+)/)[1];
+                return {type:"Chrome",version:ver};
+            }
+            //Opera
+            else if(explorer.indexOf("opera") >= 0){
+                var ver=explorer.match(/opera.([\d.]+)/)[1];
+                return {type:"Opera",version:ver};
+            }
+            //Safari
+            else if(explorer.indexOf("Safari") >= 0){
+                var ver=explorer.match(/version\/([\d.]+)/)[1];
+                return {type:"Safari",version:ver};
+            }
+        }
+        alert("type:"+getExplorerInfo().type+"\n version:"+getExplorerInfo().version);
+    </script>
+</body>
+</html>

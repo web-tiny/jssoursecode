@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Block Scope Example</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /**
+             * 在JS中，变量i在outputNums()的活动对象中，因此从它有定义开始，就可以在
+             * 函数内部随处访问它，而在java，C++等语言中，变量i只会在for循环的语句块中有
+             * 定义，循环一旦结束，变量i就被销毁，
+             * 所以对于下面重新声明的变量i，会视而不见
+             * @param count
+             */
+            function outputNumbers(count){
+                for (var i=0; i < count; i++){
+                    alert(i);
+                }
+            
+                var i;    //variable re-declared
+                alert(i);   //count  为什么不是undefined？？？
+            }
+
+            outputNumbers(5);
+        </script>
+     
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Recursion Example</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /**
+             * arguments.callee() 是一个指向正在执行的函数的指针，因此可以用它来实现对函数
+             * 的递归调用，
+             * @param num
+             * @returns {number}
+             */
+            function factorial(num){
+                if (num <= 1){
+                    return 1;
+                } else {
+                    return num * arguments.callee(num-1);
+                }
+            }
+
+            var anotherFactorial = factorial;
+            factorial = null;
+            alert(anotherFactorial(4));  //24
+
+            /**
+             * 在严格模式下，不能通过脚本访问arguments.callee,访问这个属性会报错，
+             * 可以使用命名函数表达式来达成相同的效果；
+             * 以下代码创建了一个名为f()的命名函数表达式，将其值赋值给变量factorial，即便把函数赋值给了
+             * 另一个变量，函数的名字f仍然有效，这种方式在严格模式和非严格模式下都OK，
+             * @type {f}
+             */
+            var factorial2=(function f(num){
+                if(num <= 1){
+                    return 1;
+                }else{
+                    return num * f(num-1);
+                }
+            });
+            alert(factorial2(5));//120
+        </script>
+     
+    </body>
+</html>

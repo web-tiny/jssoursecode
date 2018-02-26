@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IE Event Object Example</title>
+</head>
+<body>
+    <input type="button" id="myBtn" value="Click Me" />
+    <p>This example only works in Internet Explorer.</p>
+    <script type="text/javascript">
+        /**
+         * DOM0级事件处理程序中，this就是target,也等于currentTarget,
+         * @type {Element}
+         */
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function(){
+            alert(window.event.srcElement === this);      //true
+        };
+
+        /**
+         * 在IE事件处理程序中，this是指向window的
+         */
+        btn.attachEvent("onclick", function(event){
+            alert(event.srcElement === this);             //false
+        });
+      
+    </script>
+</body>
+</html>

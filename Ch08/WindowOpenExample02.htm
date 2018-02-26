@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Window Open Example 2</title>
+</head>
+<body>
+    <script type="text/javascript">
+        /**
+         * window.resizeTo(screen.availWidth,screen.availHeight):
+         * 次方法用来调整浏览器窗口的大小，使其占据屏幕的可用空间，但是
+         * 许多浏览器会禁用调整浏览器窗口大小的能力，因此这行代码不一定在所有环境下都有效；
+         */
+        function openNewWindow(){
+            var win = window.open('http://www.wrox.com/', 'wroxWindow', 'width=300,height=300,left=10,top=10');
+            win.resizeTo(500,500);
+            win.moveTo(100,100);
+        }
+        
+        window.open("http://www.wrox.com");
+    </script>
+    <p>This will open a new window/tab:
+    <input type="button" value="Go to Wrox.com" onclick="openNewWindow()" /></p>
+ 
+</body>
+</html>

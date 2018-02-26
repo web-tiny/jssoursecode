@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Event Object Example</title>
+</head>
+<body>
+    <input type="button" id="myBtn" value="Click Me" />
+    <script type="text/javascript">
+        /**
+         * 当直接将事件处理程序指定给了目标元素的时候，this,currentTarget,target包含相同的值
+         * @type {Element}
+         */
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function(event){
+            alert(event.currentTarget === this);//true
+            alert(event.target === this);//true
+            console.log(this.id);//myBtn
+            console.log(event.currentTarget.id);//myBtn
+            console.log(event.target.id);//myBtn
+        };        
+    </script>
+</body>
+</html>

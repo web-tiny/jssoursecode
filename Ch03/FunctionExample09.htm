@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Function Example 9</title>
+    <script type="text/javascript">
+        /**
+         *函数的arguments的值永远与参数名保值同步。因为arguments对象中的值会自动反映到函数参数中，
+         * @param num1
+         * @param num2
+         */
+        function doAdd(num1, num2) {
+            //if(arguments.length == 1) {
+                arguments[1] = 10;
+            //}
+            alert(arguments[0] + num2);
+        }
+
+        doAdd(10, 20);        //20
+        doAdd(30, 20);    //40
+        doAdd(50);    //NaN 没有传递值的参数将会自动被赋予undefined 值
+    </script>
+</head>
+<body>
+
+</body>
+</html>

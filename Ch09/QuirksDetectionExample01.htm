@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quirks Detection Example</title>
+    <script type="text/javascript">
+        /**
+         * 怪癖检测：
+         * 在IE8及更早版本中存在一个bug，即如果某个实例属性与Enumerable标记为false的某个原型属性同名，
+         * 那么该实例属性将不会出现在for-in循环中，可以用如下代码来检测
+         */
+        var hasDontEnumQuirk = function(){
+            var o = { toString : function(){} };
+            for (var prop in o){
+                //alert(prop); //toString
+                //alert(o[prop]);//function(){}
+                if (prop == "toString"){
+                    return false;
+                }
+            }
+            return true;
+        }();
+
+        /**
+         * 在Safari 3以前版本会枚举被隐藏的属性，可以用下面的函数来检测该bug
+         */
+        var hasEnumShadowsQuirk = function(){
+        
+            var o = { toString : function(){} };
+            var count = 0;
+            for (var prop in o){
+                if (prop == "toString"){
+                    count++;
+                }
+            }
+        
+            return (count > 1);
+        }();
+
+        alert(hasDontEnumQuirk);
+        alert(hasEnumShadowsQuirk);
+    </script>
+</head>
+<body>
+
+</body>
+</html>
