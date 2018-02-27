@@ -1,25 +1,34 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Function Binding Example</title>
     <script type="text/javascript" src="EventUtil.js"></script>
 </head>
+
 <body>
-    <p>This only works in browsers that natively support <code>Function.prototype.bind()</code>.</p>
+    <p>This only works in browsers that natively support
+        <code>Function.prototype.bind()</code>.</p>
     <input type="button" id="my-btn" value="Click Me" />
     <script type="text/javascript">
+        /*
+        所有函数都有原生bind()方法，因此可以直接调用
+        函数绑定主要用于事件处理程序以及setTimeout() and setInterval() 
+        但是被绑定函数与普通函数相比有更多的开销，他们需要更多的内存，同时也因为多重函数调用稍微慢一点，所以最好只在必要时使用
+         */
         var handler = {
             message: "Event handled",
-        
-            handleClick: function(event){
+
+            handleClick: function (event) {
                 alert(this.message + ":" + event.type);
             }
         };
-        
+
         var btn = document.getElementById("my-btn");
         EventUtil.addHandler(btn, "click", handler.handleClick.bind(handler));
 
 
     </script>
 </body>
+
 </html>

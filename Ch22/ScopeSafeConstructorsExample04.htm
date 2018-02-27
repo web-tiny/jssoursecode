@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Scope-Safe Constructors Example</title>
 </head>
+
 <body>
     <script type="text/javascript">
-        function Polygon(sides){
+        /**
+         * 当多个程序员在同一个页面上写js代码的环境中，作用域安全构造函数就很有用了，届时
+         * 对全局对象意外的更改可能会导致一些常常难以追踪的错误，
+         * */
+        function Polygon(sides) {
             if (this instanceof Polygon) {
                 this.sides = sides;
-                this.getArea = function(){
+                this.getArea = function () {
                     return 0;
                 };
             } else {
                 return new Polygon(sides);
             }
         }
-        
-        function Rectangle(width, height){
+
+        function Rectangle(width, height) {
             Polygon.call(this, 2);
             this.width = width;
             this.height = height;
-            this.getArea = function(){
+            this.getArea = function () {
                 return this.width * this.height;
             };
         }
-        
+
         Rectangle.prototype = new Polygon();
-        
+
         var rect = new Rectangle(5, 10);
         alert(rect.sides);   //2
 
@@ -35,4 +41,5 @@
 
     </script>
 </body>
+
 </html>

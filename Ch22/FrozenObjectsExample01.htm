@@ -6,6 +6,12 @@
 <body>
     <p>This only works in browsers that natively support ECMAScript 5.</p>
     <script>
+        /* 
+        冻结对象：Object.freeze();
+        1:不可扩展
+        2：密封的
+        3：Wrible特性被设置为false
+         */
         var person = { name: "Nicholas" };
         Object.freeze(person);
         

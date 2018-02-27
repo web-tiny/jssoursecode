@@ -6,11 +6,14 @@
 <body>
     <p>This only works in browsers that natively support ECMAScript 5.</p>
     <script>
+        /**
+         * Object.preventExtensions()可以让对象不能再添加新的属性和方法
+         * */
         var person = { name: "Nicholas" };
         Object.preventExtensions(person);
         
         person.age = 29;
-        alert(person.age);
+        alert(person.age);//undefined
     </script>
 </body>
 </html>

@@ -5,7 +5,10 @@
 </head>
 <body>
     <script type="text/javascript">
-            
+        /**
+         * 作用域安全的构造函数
+         * 
+         * */
         function Polygon(sides){
             if (this instanceof Polygon) {
                 this.sides = sides;
@@ -18,6 +21,9 @@
         }
         
         function Rectangle(width, height){
+            /**
+             * Polygon构造函数是作用域安全的,所以this对象并非Polygon实例，只是返回一个Polygon对象
+             * */
             Polygon.call(this, 2);
             this.width = width;
             this.height = height;

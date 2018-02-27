@@ -6,6 +6,12 @@
 <body>
     <p>This only works in browsers that natively support ECMAScript 5.</p>
     <script>
+        /* 
+        密封对象的方法：Object.seal();
+        密封的对象：
+        1：不可扩展
+        2：Configurable为false
+         */
         var person = { name: "Nicholas" };
         Object.seal(person);
         

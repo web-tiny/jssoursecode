@@ -1,45 +1,51 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Lazy Loading Example</title>
 </head>
+
 <body>
     <script type="text/javascript">
-        var createXHR = (function(){
-            if (typeof XMLHttpRequest != "undefined"){
-                return function(){
+        /**惰性载入的第二种方式：在声明函数时就指定适当的函数，这样，第一次调用函数时就不会损失性能了，只是在代码加载时会损失一点性能，实现代码如下，匿名自执行函数用以确定应该使用哪个函数，以便加载好就将值赋值给createXHR
+         * 
+         * */
+        var createXHR = (function () {
+            if (typeof XMLHttpRequest != "undefined") {
+                return function () {
                     return new XMLHttpRequest();
                 };
-            } else if (typeof ActiveXObject != "undefined"){
-                return function(){                    
-                    if (typeof arguments.callee.activeXString != "string"){
+            } else if (typeof ActiveXObject != "undefined") {
+                return function () {
+                    if (typeof arguments.callee.activeXString != "string") {
                         var versions = ["MSXML2.XMLHttp.6.0", "MSXML2.XMLHttp.3.0",
-                                        "MSXML2.XMLHttp"],
+                            "MSXML2.XMLHttp"],
                             i, len;
-                
-                        for (i=0,len=versions.length; i < len; i++){
+
+                        for (i = 0, len = versions.length; i < len; i++) {
                             try {
                                 new ActiveXObject(versions[i]);
                                 arguments.callee.activeXString = versions[i];
                                 break;
-                            } catch (ex){
+                            } catch (ex) {
                                 //skip
                             }
                         }
                     }
-                
+
                     return new ActiveXObject(arguments.callee.activeXString);
                 };
             } else {
-                return function(){
+                return function () {
                     throw new Error("No XHR object available.");
                 };
             }
         })();
-        
+
         var xhr1 = createXHR();
         var xhr2 = createXHR();
 
     </script>
 </body>
+
 </html>
