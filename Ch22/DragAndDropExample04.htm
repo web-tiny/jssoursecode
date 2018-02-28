@@ -1,92 +1,112 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Drag and Drop Example</title>
     <script type="text/javascript" src="EventUtil.js"></script>
     <script type="text/javascript" src="EventTarget.js"></script>
 </head>
+
 <body>
     <div id="status"></div>
     <div id="myDiv1" class="draggable" style="top:100px;left:0px;background:red;width:100px;height:100px;position:absolute"></div>
     <div id="myDiv2" class="draggable" style="background:blue;width:100px;height:100px;position:absolute;top:100px;left:100px"></div>
     <script type="text/javascript">
 
-        var DragDrop = function(){
-        
+        var DragDrop = function () {
+
             var dragdrop = new EventTarget(),
                 dragging = null,
                 diffX = 0,
                 diffY = 0;
-            
-            function handleEvent(event){
-            
+
+            function handleEvent(event) {
+
                 //get event and target
                 event = EventUtil.getEvent(event);
-                var target = EventUtil.getTarget(event);            
-            
+                var target = EventUtil.getTarget(event);
+
                 //determine the type of event
-                switch(event.type){
+                switch (event.type) {
                     case "mousedown":
-                        if (target.className.indexOf("draggable") > -1){
+                        if (target.className.indexOf("draggable") > -1) {
                             dragging = target;
                             diffX = event.clientX - target.offsetLeft;
                             diffY = event.clientY - target.offsetTop;
-                            dragdrop.fire({type:"dragstart", target: dragging, x: event.clientX, y: event.clientY});
-                        }                     
+                            dragdrop.fire({ type: "dragstart", target: dragging, x: event.clientX, y: event.clientY });
+                        }
                         break;
-                        
+
                     case "mousemove":
-                        if (dragging !== null){
-                            
+                        if (dragging !== null) {
+                            var left=event.clientX - diffX;
+                            var top=event.clientY - diffY;
+                            //判断左边是否过界
+                            if (left < 0) {
+                                left = 0;
+                            }
+                            //判断右边是否过界
+                            else if (left > document.documentElement.clientWidth - dragging.offsetWidth) {
+                                left = document.documentElement.clientWidth - dragging.offsetWidth;
+                            }
+                            //判断上边是否过界
+                            if (top < 0) {
+                                top = 0;
+                            }
+                            //判断下边是否过界
+                            else if (top > document.documentElement.clientHeight) {
+                                top = document.documentElement.clientHeight - dragging.offsetHeight;
+                            }
                             //assign location
-                            dragging.style.left = (event.clientX - diffX) + "px";
-                            dragging.style.top = (event.clientY - diffY) + "px";   
+                            dragging.style.left = left + "px";
+                            dragging.style.top = top + "px";
 
                             //fire custom event
-                            dragdrop.fire({type:"drag", target: dragging, x: event.clientX, y: event.clientY});
-                        }                    
+                            dragdrop.fire({ type: "drag", target: dragging, x: event.clientX, y: event.clientY });
+                        }
                         break;
-                        
+
                     case "mouseup":
-                        dragdrop.fire({type:"dragend", target: dragging, x: event.clientX, y: event.clientY});
+                        dragdrop.fire({ type: "dragend", target: dragging, x: event.clientX, y: event.clientY });
                         dragging = null;
                         break;
                 }
             };
-            
+
             //public interface
-            dragdrop.enable = function(){
-                    EventUtil.addHandler(document, "mousedown", handleEvent);
-                    EventUtil.addHandler(document, "mousemove", handleEvent);
-                    EventUtil.addHandler(document, "mouseup", handleEvent);
+            dragdrop.enable = function () {
+                EventUtil.addHandler(document, "mousedown", handleEvent);
+                EventUtil.addHandler(document, "mousemove", handleEvent);
+                EventUtil.addHandler(document, "mouseup", handleEvent);
             };
-                
-            dragdrop.disable = function(){
-                    EventUtil.removeHandler(document, "mousedown", handleEvent);
-                    EventUtil.removeHandler(document, "mousemove", handleEvent);
-                    EventUtil.removeHandler(document, "mouseup", handleEvent);
+
+            dragdrop.disable = function () {
+                EventUtil.removeHandler(document, "mousedown", handleEvent);
+                EventUtil.removeHandler(document, "mousemove", handleEvent);
+                EventUtil.removeHandler(document, "mouseup", handleEvent);
             };
-            
+
             return dragdrop;
         }();
-        
+
         DragDrop.enable();
-                        
-        DragDrop.addHandler("dragstart", function(event){
+
+        DragDrop.addHandler("dragstart", function (event) {
             var status = document.getElementById("status");
             status.innerHTML = "Started dragging " + event.target.id;
         });
-        
-        DragDrop.addHandler("drag", function(event){
+
+        DragDrop.addHandler("drag", function (event) {
             var status = document.getElementById("status");
             status.innerHTML += "<br>Dragged " + event.target.id + " to (" + event.x + "," + event.y + ")";
         });
-        
-        DragDrop.addHandler("dragend", function(event){
+
+        DragDrop.addHandler("dragend", function (event) {
             var status = document.getElementById("status");
             status.innerHTML += "<br>Dropped " + event.target.id + " at (" + event.x + "," + event.y + ")";
         });
-        
+
     </script>
 </body>
+
 </html>
